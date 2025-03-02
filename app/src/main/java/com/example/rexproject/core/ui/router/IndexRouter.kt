@@ -7,7 +7,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.example.rexproject.core.data.local.shared_preferences.UserPreferences
 import com.example.rexproject.create_user.ui.view.CreateUserView
+import com.example.rexproject.home.ui.view.HomeView
 import com.example.rexproject.shared.data.states.user.LocalUser
+import com.example.rexproject.shared.data.states.user.getUser
 import com.example.rexproject.shared.data.states.user.setUser
 
 @Composable
@@ -18,6 +20,7 @@ fun IndexRouter(ctx : Context, modifier: Modifier = Modifier) {
 
     if (userFromPreferences.id != -1 && userFromPreferences.username != "") {
         localUser.setUser(userFromPreferences)
+        HomeView(username = localUser.getUser().username)
     }else{
         CreateUserView()
     }

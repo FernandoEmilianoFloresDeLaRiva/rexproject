@@ -36,11 +36,24 @@ fun CreateUserView(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(color = colorScheme.primary)
+            .background(color = colorScheme.onSecondaryContainer)
             .padding(40.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
+
+        Text(
+            text = "Crea tu username y comienza el cuidado de tu mascota :D",
+            color = colorScheme.onPrimary,
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            lineHeight = 28.sp
+        )
+
+        Spacer(modifier = modifier.height(50.dp))
+
+
         TextField(
             modifier = modifier.fillMaxWidth(),
             colors = TextFieldDefaults.colors(
@@ -58,7 +71,7 @@ fun CreateUserView(
         Spacer(modifier = modifier.height(50.dp))
 
         Button(
-            onClick = {},
+            onClick = { createUserViewModel.saveUsername() },
             modifier = modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(
                containerColor = colorScheme.primaryContainer,
@@ -66,7 +79,7 @@ fun CreateUserView(
             shape = RoundedCornerShape(8.dp)
         ) {
             Text(
-                "Crea tu username y comienza el cuidado de tu mascota :D",
+                "Crear username",
                 color = colorScheme.onPrimaryContainer,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,

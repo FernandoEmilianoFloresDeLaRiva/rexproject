@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
 import com.example.rexproject.core.data.local.shared_preferences.UserPreferences
+import com.example.rexproject.core.domain.adapters.UserAdapter
 
 class CreateUserViewModel(app : Application) : AndroidViewModel(app) {
     val _username = mutableStateOf("")
@@ -17,7 +18,7 @@ class CreateUserViewModel(app : Application) : AndroidViewModel(app) {
 
     fun saveUsername () {
         // petición al back
-        // val userRes = UserAdapter()
-        // userPreferences.saveUserData(userRes)
+        val userRes = UserAdapter(1, "fer")
+        userPreferences.saveUserData(userRes)
     }
 }
