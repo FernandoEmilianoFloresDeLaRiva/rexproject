@@ -14,10 +14,10 @@ class UserPreferences(ctx : Context) {
         editor.apply()
     }
 
-    fun getUserData() : Pair<Int, String?> {
+    fun getUserData() : UserAdapter {
         val id = sharedPreferences.getInt(SharedPreferencesConstants.USER_ID_PREFERENCE, -1)
         val username = sharedPreferences.getString(SharedPreferencesConstants.USER_NAME_PREFERENCE, null)
-        return Pair(id, username)
+        return UserAdapter(id, username ?: "")
     }
 
     fun clearUserData(){
