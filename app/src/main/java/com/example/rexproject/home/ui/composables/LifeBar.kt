@@ -1,4 +1,4 @@
-package com.example.rexproject.shared.ui
+package com.example.rexproject.home.ui.composables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -33,7 +34,7 @@ fun LifeBar(percentageTitle : String, percentage : Int) {
     ) {
         Box(
             modifier = Modifier
-                .height(20.dp)
+                .height(25.dp)
                 .width(400.dp)
                 .background(
                     Color.Gray,
@@ -48,10 +49,13 @@ fun LifeBar(percentageTitle : String, percentage : Int) {
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
-
-                modifier = Modifier.padding( horizontal = 10.dp).fillMaxWidth()
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding( horizontal = 10.dp).fillMaxSize()
             ){
-                Text(text = percentageTitle, fontSize = 15.sp)
+                Text(
+                    text = percentageTitle,
+                    fontSize = 15.sp,
+                )
                 Text(text = "$percentage%", fontSize = 18.sp)
             }
         }
