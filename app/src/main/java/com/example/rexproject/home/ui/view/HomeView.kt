@@ -4,7 +4,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
@@ -13,13 +16,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.rexproject.R
+import com.example.rexproject.home.ui.composables.ItemBottomBar
 import com.example.rexproject.home.ui.composables.LifeBarGroup
 
 @Composable
@@ -41,7 +44,21 @@ fun HomeView(
     }
     Scaffold(
         containerColor = MaterialTheme.colorScheme.primaryContainer,
-        topBar = { LifeBarGroup() }
+        topBar = { LifeBarGroup() },
+        bottomBar = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                modifier = Modifier
+                    .height(100.dp)
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.inversePrimary)
+            ) {
+                ItemBottomBar(title = "Alimentalo", icon = R.drawable.meat)
+                ItemBottomBar(title = "Limpialo", icon = R.drawable.sponge)
+                ItemBottomBar(title = "Juega con el", icon = R.drawable.ball)
+            }
+        }
     ){
         Column(
             modifier = modifier
