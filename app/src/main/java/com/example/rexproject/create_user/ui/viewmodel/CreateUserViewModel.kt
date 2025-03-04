@@ -17,7 +17,7 @@ class CreateUserViewModel(app : Application) : AndroidViewModel(app) {
     }
 
     fun saveUsername () {
-        // petición al back
+         // petición al back
         val userRes = UserAdapter(1, "fer")
         userPreferences.saveUserData(userRes)
     }

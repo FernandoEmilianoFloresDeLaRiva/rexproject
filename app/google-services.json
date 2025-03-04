@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "424304323779",
+    "project_id": "rexproject-94523",
+    "storage_bucket": "rexproject-94523.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424304323779:android:f1fce9e5a79d99fb254676",
+        "android_client_info": {
+          "package_name": "com.example.rexproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQkHOsjoGVV4aQXgginSjkyjguB4lcRyU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
