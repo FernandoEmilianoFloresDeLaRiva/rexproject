@@ -2,6 +2,7 @@ package com.example.rexproject
 
 import android.app.Application
 import android.util.Log
+import com.example.rexproject.core.data.local.shared_preferences.UserPreferences
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.ktx.messaging
 
@@ -14,7 +15,13 @@ class MyApp : Application() {
                 return@addOnCompleteListener
             }
             val token = it.result
-            Log.d("TAG_APP", "onCreate: $token")
+            saveTokenToPreferences(token)
         }
+    }
+
+    private fun saveTokenToPreferences(token : String){
+        val userPreferences = UserPreferences(this)
+        userPreferences.saveToken(token)
+        Log.d("TAG_APP", "Token $token guardado en shared preferences exitosamente")
     }
 }

@@ -22,7 +22,24 @@ class UserPreferences(ctx : Context) {
 
     fun clearUserData(){
         val editor = sharedPreferences.edit()
-        editor.clear()
+        editor.remove(SharedPreferencesConstants.USER_ID_PREFERENCE)
+        editor.remove(SharedPreferencesConstants.USER_NAME_PREFERENCE)
+        editor.apply()
+    }
+
+    fun saveToken(token : String){
+        val editor = sharedPreferences.edit()
+        editor.putString(SharedPreferencesConstants.FIREBASE_TOKEN, token)
+        editor.apply()
+    }
+
+    fun getToken() : String {
+        return sharedPreferences.getString(SharedPreferencesConstants.FIREBASE_TOKEN, "") ?: ""
+    }
+
+    fun clearToken(){
+        val editor = sharedPreferences.edit()
+        editor.remove(SharedPreferencesConstants.FIREBASE_TOKEN)
         editor.apply()
     }
 }
