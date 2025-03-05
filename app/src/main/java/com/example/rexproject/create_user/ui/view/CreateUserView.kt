@@ -23,7 +23,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.rexproject.create_user.ui.viewmodel.CreateUserViewModel
 import com.example.rexproject.shared.data.states.viewmodel_manager.LocalViewModelProvider
 
 @Composable
@@ -36,7 +35,7 @@ fun CreateUserView(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(color = colorScheme.onSecondaryContainer)
+            .background(color = colorScheme.primary)
             .padding(40.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
