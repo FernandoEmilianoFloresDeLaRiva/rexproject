@@ -8,9 +8,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.rexproject.home.domain.adapters.DinoPetStatsAdapter
 
 @Composable
-fun LifeBarGroup(modifier: Modifier = Modifier) {
+fun LifeBarGroup(
+    modifier: Modifier = Modifier,
+    dinoPetStatsAdapter: DinoPetStatsAdapter
+) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -18,9 +22,9 @@ fun LifeBarGroup(modifier: Modifier = Modifier) {
             .padding(top = 50.dp)
             .fillMaxWidth()
     ){
-        LifeBar(percentage = 100, percentageTitle = "HP")
-        LifeBar(percentage = 60, percentageTitle = "COMIDA")
-        LifeBar(percentage = 40, percentageTitle = "CORDURA")
-        LifeBar(percentage = 30, percentageTitle = "LIMPIEZA")
+        LifeBar(percentage = dinoPetStatsAdapter.hp, percentageTitle = "HP")
+        LifeBar(percentage = dinoPetStatsAdapter.food, percentageTitle = "COMIDA")
+        LifeBar(percentage = dinoPetStatsAdapter.sanity, percentageTitle = "CORDURA")
+        LifeBar(percentage = dinoPetStatsAdapter.clean, percentageTitle = "LIMPIEZA")
     }
 }

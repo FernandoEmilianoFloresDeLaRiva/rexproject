@@ -24,28 +24,18 @@ import androidx.compose.ui.unit.sp
 import com.example.rexproject.R
 import com.example.rexproject.home.ui.composables.ItemBottomBar
 import com.example.rexproject.home.ui.composables.LifeBarGroup
-import com.example.rexproject.home.ui.viewmodel.HomeViewModel
+import com.example.rexproject.shared.data.states.viewmodel_manager.LocalViewModelProvider
 
 @Composable
 fun HomeView(
     modifier: Modifier = Modifier,
     username : String,
 ) {
-    val hp = 100
-    val rexImg = when (hp) {
-        in 100 downTo 88 -> R.drawable.rex6
-        in 87 downTo 76 -> R.drawable.rex2
-        in 75 downTo 64 -> R.drawable.rex5
-        in 63 downTo 52 -> R.drawable.rex1
-        in 51 downTo 40 -> R.drawable.rex4
-        in 39 downTo 28 -> R.drawable.rex7
-        in 27 downTo 16 -> R.drawable.rex9
-        in 15 downTo 1 -> R.drawable.rex8
-        else -> R.drawable.ic_launcher_foreground
-    }
+    val homeViewModel = LocalViewModelProvider.current.homeViewModel
+
     Scaffold(
         containerColor = MaterialTheme.colorScheme.primaryContainer,
-        topBar = { LifeBarGroup() },
+        topBar = { LifeBarGroup(dinoPetStatsAdapter = homeViewModel.getDinoPetStats()) },
         bottomBar = {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -55,9 +45,21 @@ fun HomeView(
                     .fillMaxWidth()
                     .background(MaterialTheme.colorScheme.inversePrimary)
             ) {
-                ItemBottomBar(title = "Alimentalo", icon = R.drawable.meat)
-                ItemBottomBar(title = "Limpialo", icon = R.drawable.sponge)
-                ItemBottomBar(title = "Juega con el", icon = R.drawable.ball)
+                ItemBottomBar(
+                    title = "Alimentalo",
+                    icon = R.drawable.meat,
+                    onClick = { homeViewModel.increaseFood() }
+                )
+                ItemBottomBar(
+                    title = "Limpialo",
+                    icon = R.drawable.sponge,
+                    onClick = { homeViewModel.increaseClean() }
+                )
+                ItemBottomBar(
+                    title = "Juega con el",
+                    icon = R.drawable.ball,
+                    onClick = { homeViewModel.increaseSanity() }
+                )
             }
         }
     ){
@@ -69,7 +71,7 @@ fun HomeView(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(rexImg),
+                painter = painterResource(homeViewModel.rexImg),
                 contentDescription = "Rex image",
                 modifier = Modifier
                     .padding(16.dp)

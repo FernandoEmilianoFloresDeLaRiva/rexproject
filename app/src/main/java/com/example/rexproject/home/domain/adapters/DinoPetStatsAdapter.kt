@@ -1,4 +1,4 @@
-package com.example.rexproject.home.domain.models
+package com.example.rexproject.home.domain.adapters
 
 data class DinoPetStatsAdapter(
     val hp : Double,

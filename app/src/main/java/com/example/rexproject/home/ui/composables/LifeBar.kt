@@ -23,10 +23,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun LifeBar(percentageTitle : String, percentage : Int) {
+fun LifeBar(percentageTitle : String, percentage : Double) {
     val barColor = when {
         percentage > 70 -> Color.Green
-        percentage in 40..70 -> Color.Yellow
+        percentage.toInt() in 40..70 -> Color.Yellow
         else -> Color.Red
     }
 

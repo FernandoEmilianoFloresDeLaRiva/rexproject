@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.example.rexproject.create_user.ui.viewmodel.CreateUserViewModel
+import com.example.rexproject.home.ui.viewmodel.HomeViewModel
 
 class ViewModelManager(private val ctx : Context){
     private val viewModelCache = mutableMapOf<Class <out AndroidViewModel>, AndroidViewModel>()
@@ -29,5 +30,9 @@ class ViewModelManager(private val ctx : Context){
 
     val createUserViewModel: CreateUserViewModel by lazy {
         getViewModel(CreateUserViewModel::class.java)
+    }
+
+    val homeViewModel: HomeViewModel by lazy {
+        getViewModel(HomeViewModel::class.java)
     }
 }

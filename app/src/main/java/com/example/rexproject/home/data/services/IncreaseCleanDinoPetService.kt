@@ -2,7 +2,7 @@ package com.example.rexproject.home.data.services
 
 import com.example.rexproject.core.data.api.RetroFitClient
 import com.example.rexproject.home.data.api.IncreaseCleanDinoPetApi
-import com.example.rexproject.home.domain.models.DinoPetStatsAdapter
+import com.example.rexproject.home.domain.adapters.DinoPetStatsAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
