@@ -24,11 +24,12 @@ import androidx.compose.ui.unit.sp
 import com.example.rexproject.R
 import com.example.rexproject.home.ui.composables.ItemBottomBar
 import com.example.rexproject.home.ui.composables.LifeBarGroup
+import com.example.rexproject.home.ui.viewmodel.HomeViewModel
 
 @Composable
 fun HomeView(
     modifier: Modifier = Modifier,
-    username : String
+    username : String,
 ) {
     val hp = 100
     val rexImg = when (hp) {

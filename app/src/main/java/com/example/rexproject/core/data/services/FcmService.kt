@@ -2,6 +2,7 @@ package com.example.rexproject.core.data.services
 
 import android.app.NotificationManager
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.example.rexproject.MyApp
@@ -14,6 +15,7 @@ class FcmService : FirebaseMessagingService() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
+        Log.d("FCM_TAG", "onMessageReceived: ${message.data}")
         showNotification(message)
     }
 
@@ -27,9 +29,11 @@ class FcmService : FirebaseMessagingService() {
     @RequiresApi(Build.VERSION_CODES.M)
     private fun showNotification(message: RemoteMessage) {
         val notificationManager = getSystemService(NotificationManager::class.java)
+        val title = message.data["title"] ?: ""
+        val body = message.data["body"] ?: ""
         val notification = NotificationCompat.Builder(this, MyApp.NOTIFICATION_CHANNEL_ID)
-            .setContentTitle(message.notification?.title)
-            .setContentText(message.notification?.body)
+            .setContentTitle(title)
+            .setContentText(body)
             .setSmallIcon(R.drawable.rex1)
             .setAutoCancel(true)
             .build()

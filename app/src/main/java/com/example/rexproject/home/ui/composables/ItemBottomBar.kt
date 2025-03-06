@@ -1,6 +1,7 @@
 package com.example.rexproject.home.ui.composables
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -18,11 +19,14 @@ import androidx.compose.ui.unit.sp
 fun ItemBottomBar(
     modifier: Modifier = Modifier,
     title : String = "",
-    icon : Int
+    icon : Int,
+    onClick : () -> Unit = {}
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.padding(horizontal = 12.dp)
+        modifier = modifier
+            .padding(horizontal = 12.dp)
+            .clickable { onClick() }
     ) {
         Image(
             painter = painterResource(id = icon),
