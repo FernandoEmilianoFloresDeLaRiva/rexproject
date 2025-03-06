@@ -1,6 +1,7 @@
 package com.example.rexproject.home.ui.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
@@ -57,6 +58,8 @@ class HomeViewModel(app : Application) : AndroidViewModel(app) {
         viewModelScope.launch {
             _increaseFoodDinoPetService.increaseFoodDinoPetById(userId.intValue).onSuccess {
                 updateDinoPetStats(it.hp, it.food, it.sanity, it.clean)
+            }.onFailure {
+                Log.d("HOME_VM_TAG", "ErrorIncreaseFood: $it")
             }
         }
     }
@@ -65,6 +68,8 @@ class HomeViewModel(app : Application) : AndroidViewModel(app) {
         viewModelScope.launch {
             _increaseSanityDinoPetService.increaseSanityDinoPetById(userId.intValue).onSuccess {
                 updateDinoPetStats(it.hp, it.food, it.sanity, it.clean)
+            }.onFailure {
+                Log.d("HOME_VM_TAG", "ErrorIncreaseSanity: $it")
             }
         }
     }
@@ -73,6 +78,8 @@ class HomeViewModel(app : Application) : AndroidViewModel(app) {
         viewModelScope.launch {
             _increaseCleanDinoPetService.increaseCleanDinoPetById(userId.intValue).onSuccess {
                 updateDinoPetStats(it.hp, it.food, it.sanity, it.clean)
+            }.onFailure {
+                Log.d("HOME_VM_TAG", "ErrorIncreaseClean: $it")
             }
         }
     }
@@ -92,8 +99,11 @@ class HomeViewModel(app : Application) : AndroidViewModel(app) {
             while (true) {
                 _getDinoPetByIdService.getDinoPetById(userId.intValue).onSuccess {
                     updateDinoPetStats(it.hp, it.food, it.sanity, it.clean)
+                    Log.d("HOME_VM_TAG", "ShortPolling: $it")
+                }.onFailure {
+                    Log.d("HOME_VM_TAG", "ErrorShortPolling: $it")
                 }
-                delay(5 * 60 * 1000)
+                delay(1 * 60 * 1000)
             }
         }
     }

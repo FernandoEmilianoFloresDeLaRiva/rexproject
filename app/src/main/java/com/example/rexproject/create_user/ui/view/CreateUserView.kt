@@ -53,6 +53,17 @@ fun CreateUserView(
         horizontalAlignment = Alignment.CenterHorizontally
     ){
 
+        if (createUserState is CreateUserState.Error) {
+            Text(
+                text = createUserState.message,
+                color = colorScheme.error,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                lineHeight = 20.sp
+            )
+        }
+
         Text(
             text = "Crea tu username y comienza el cuidado de tu mascota :D",
             color = colorScheme.onPrimary,
