@@ -16,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,6 +24,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.rexproject.create_user.domain.models.CreateUserState
+import com.example.rexproject.shared.data.states.user.LocalUser
+import com.example.rexproject.shared.data.states.user.setUser
 import com.example.rexproject.shared.data.states.viewmodel_manager.LocalViewModelProvider
 
 @Composable
@@ -31,6 +35,14 @@ fun CreateUserView(
 ) {
     val createUserViewModel = LocalViewModelProvider.current.createUserViewModel
     val colorScheme = MaterialTheme.colorScheme
+    val createUserState = createUserViewModel.createUserState.value
+    val localUser = LocalUser.current
+
+    LaunchedEffect(createUserState) {
+        if (createUserState is CreateUserState.Success) {
+            localUser.setUser(createUserState.user)
+        }
+    }
 
     Column(
         modifier = modifier

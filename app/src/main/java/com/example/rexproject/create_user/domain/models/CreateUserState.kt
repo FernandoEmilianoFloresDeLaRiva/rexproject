@@ -5,6 +5,6 @@ import com.example.rexproject.core.domain.adapters.UserAdapter
 sealed class CreateUserState {
     data object Idle : CreateUserState()
     data object Loading : CreateUserState()
-    data class Success(val username: UserAdapter) : CreateUserState()
+    data class Success(val user: UserAdapter) : CreateUserState()
     data class Error(val message: String) : CreateUserState()
 }
