@@ -76,8 +76,8 @@ fun HomeView(
                 contentScale = ContentScale.Fit
             )
             Text(
-                text = "Bienvenido $username",
-                fontSize = 25.sp,
+                text = username,
+                fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
         }

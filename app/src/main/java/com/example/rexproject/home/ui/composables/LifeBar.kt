@@ -12,11 +12,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -45,18 +47,27 @@ fun LifeBar(percentageTitle : String, percentage : Int) {
                 modifier = Modifier
                     .fillMaxHeight()
                     .width((400 * percentage / 100).dp)
-                    .background(barColor,  RoundedCornerShape(10.dp))
+                    .background(barColor, RoundedCornerShape(10.dp))
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding( horizontal = 10.dp).fillMaxSize()
+                modifier = Modifier
+                    .padding(horizontal = 10.dp)
+                    .fillMaxSize()
             ){
                 Text(
                     text = percentageTitle,
-                    fontSize = 15.sp,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary
                 )
-                Text(text = "$percentage%", fontSize = 18.sp)
+                Text(
+                    text = "$percentage%",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary
+                )
             }
         }
     }
